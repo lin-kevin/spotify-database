@@ -72,7 +72,7 @@ DROP TABLE IF EXISTS Listener CASCADE;
 
 CREATE TABLE Listener (
     username text  NOT NULL,
-    card_number int  NOT NULL,
+    card_number int  NOT NULL DEFAULT -1,
     is_premium boolean  NOT NULL,
     CONSTRAINT Listener_pk PRIMARY KEY (username)
 );
