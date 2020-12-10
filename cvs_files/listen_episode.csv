@@ -1,6 +1,6 @@
-username,listened_timestamp,listened_duration,episode_id
-raja_soori,2011-11-11 11:11:11,101,1
-joey,2011-11-11 11:11:11,102,2
-daphne,2011-11-11 11:11:11,103,3
-sara,2011-11-11 11:11:11,104,4
-kevin,2011-11-11 11:11:11,105,5
+username,listened_timestamp,listened_duration,episode_id,listen_id
+raja_soori,2011-11-11 11:11:11,101,1,1
+joey,2011-11-11 11:11:11,102,2,2
+daphne,2011-11-11 11:11:11,103,3,3
+sara,2011-11-11 11:11:11,104,4,4
+kevin,2011-11-11 11:11:11,105,5,5
