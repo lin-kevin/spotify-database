@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2020-12-06 00:46:23.497
+-- Last modification date: 2020-12-10 20:27:26.542
 
 -- tables
 -- Table: Album
@@ -10,18 +10,18 @@ CREATE TABLE Album (
     CONSTRAINT Album_pk PRIMARY KEY (album_id)
 );
 
+-- Table: Album_Upload
+CREATE TABLE Album_Upload (
+    username text  NOT NULL,
+    album_id int  NOT NULL,
+    CONSTRAINT Album_Upload_pk PRIMARY KEY (username,album_id)
+);
+
 -- Table: Artist
 CREATE TABLE Artist (
     username text  NOT NULL,
     biography text  NOT NULL,
     CONSTRAINT Artist_pk PRIMARY KEY (username)
-);
-
--- Table: Contains
-CREATE TABLE Contains (
-    playlist_id int  NOT NULL,
-    song_id int  NOT NULL,
-    CONSTRAINT Contains_pk PRIMARY KEY (playlist_id,song_id)
 );
 
 -- Table: Episode
@@ -37,20 +37,22 @@ CREATE TABLE Episode (
 
 -- Table: Listen_Episode
 CREATE TABLE Listen_Episode (
+    listened_id serial  NOT NULL,
     username text  NOT NULL,
     listened_timestamp timestamp  NOT NULL,
     listened_duration int  NOT NULL,
     episode_id int  NOT NULL,
-    CONSTRAINT Listen_Episode_pk PRIMARY KEY (username,episode_id)
+    CONSTRAINT Listen_Episode_pk PRIMARY KEY (listened_id)
 );
 
 -- Table: Listen_Song
 CREATE TABLE Listen_Song (
+    listened_id serial  NOT NULL,
     username text  NOT NULL,
     listened_timestamp timestamp  NOT NULL,
     listened_duration int  NOT NULL,
     song_id int  NOT NULL,
-    CONSTRAINT Listen_Song_pk PRIMARY KEY (username,song_id)
+    CONSTRAINT Listen_Song_pk PRIMARY KEY (listened_id)
 );
 
 -- Table: Listener
@@ -69,6 +71,13 @@ CREATE TABLE Playlist (
     CONSTRAINT Playlist_pk PRIMARY KEY (playlist_id)
 );
 
+-- Table: Playlist_Contains
+CREATE TABLE Playlist_Contains (
+    playlist_id int  NOT NULL,
+    song_id int  NOT NULL,
+    CONSTRAINT Playlist_Contains_pk PRIMARY KEY (playlist_id,song_id)
+);
+
 -- Table: Podcast
 CREATE TABLE Podcast (
     podcast_id serial  NOT NULL,
@@ -82,13 +91,6 @@ CREATE TABLE Podcast (
 CREATE TABLE Podcaster (
     username text  NOT NULL,
     CONSTRAINT Podcaster_pk PRIMARY KEY (username)
-);
-
--- Table: Releases
-CREATE TABLE Releases (
-    username text  NOT NULL,
-    album_id int  NOT NULL,
-    CONSTRAINT Releases_pk PRIMARY KEY (username,album_id)
 );
 
 -- Table: Song
@@ -114,8 +116,8 @@ CREATE TABLE "User" (
 );
 
 -- foreign keys
--- Reference: Album_Releases (table: Releases)
-ALTER TABLE Releases ADD CONSTRAINT Album_Releases
+-- Reference: Album_Releases (table: Album_Upload)
+ALTER TABLE Album_Upload ADD CONSTRAINT Album_Releases
     FOREIGN KEY (album_id)
     REFERENCES Album (album_id)  
     NOT DEFERRABLE 
@@ -130,8 +132,8 @@ ALTER TABLE Song ADD CONSTRAINT Album_Song
     INITIALLY IMMEDIATE
 ;
 
--- Reference: Contains_Playlist (table: Contains)
-ALTER TABLE Contains ADD CONSTRAINT Contains_Playlist
+-- Reference: Contains_Playlist (table: Playlist_Contains)
+ALTER TABLE Playlist_Contains ADD CONSTRAINT Contains_Playlist
     FOREIGN KEY (playlist_id)
     REFERENCES Playlist (playlist_id)  
     NOT DEFERRABLE 
@@ -202,16 +204,16 @@ ALTER TABLE Podcaster ADD CONSTRAINT Podcaster_User
     INITIALLY IMMEDIATE
 ;
 
--- Reference: Releases_Artist (table: Releases)
-ALTER TABLE Releases ADD CONSTRAINT Releases_Artist
+-- Reference: Releases_Artist (table: Album_Upload)
+ALTER TABLE Album_Upload ADD CONSTRAINT Releases_Artist
     FOREIGN KEY (username)
     REFERENCES Artist (username)  
     NOT DEFERRABLE 
     INITIALLY IMMEDIATE
 ;
 
--- Reference: Song_Contains (table: Contains)
-ALTER TABLE Contains ADD CONSTRAINT Song_Contains
+-- Reference: Song_Contains (table: Playlist_Contains)
+ALTER TABLE Playlist_Contains ADD CONSTRAINT Song_Contains
     FOREIGN KEY (song_id)
     REFERENCES Song (song_id)  
     NOT DEFERRABLE 
