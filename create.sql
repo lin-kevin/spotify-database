@@ -3,6 +3,8 @@
 
 -- tables
 -- Table: Album
+DROP TABLE IF EXISTS Album CASCADE;
+
 CREATE TABLE Album (
     album_id serial  NOT NULL,
     album_name text  NOT NULL,
@@ -11,6 +13,8 @@ CREATE TABLE Album (
 );
 
 -- Table: Album_Upload
+DROP TABLE IF EXISTS Album_Upload CASCADE;
+
 CREATE TABLE Album_Upload (
     username text  NOT NULL,
     album_id int  NOT NULL,
@@ -18,6 +22,8 @@ CREATE TABLE Album_Upload (
 );
 
 -- Table: Artist
+DROP TABLE IF EXISTS Artist CASCADE;
+
 CREATE TABLE Artist (
     username text  NOT NULL,
     biography text  NOT NULL,
@@ -25,6 +31,8 @@ CREATE TABLE Artist (
 );
 
 -- Table: Episode
+DROP TABLE IF EXISTS Episode CASCADE;
+
 CREATE TABLE Episode (
     episode_id serial  NOT NULL,
     episode_name text  NOT NULL,
@@ -36,6 +44,8 @@ CREATE TABLE Episode (
 );
 
 -- Table: Listen_Episode
+DROP TABLE IF EXISTS Listen_Episode CASCADE;
+
 CREATE TABLE Listen_Episode (
     listened_id serial  NOT NULL,
     username text  NOT NULL,
@@ -46,6 +56,8 @@ CREATE TABLE Listen_Episode (
 );
 
 -- Table: Listen_Song
+DROP TABLE IF EXISTS Listen_Song CASCADE;
+
 CREATE TABLE Listen_Song (
     listened_id serial  NOT NULL,
     username text  NOT NULL,
@@ -56,6 +68,8 @@ CREATE TABLE Listen_Song (
 );
 
 -- Table: Listener
+DROP TABLE IF EXISTS Listener CASCADE;
+
 CREATE TABLE Listener (
     username text  NOT NULL,
     card_number int  NOT NULL,
@@ -64,6 +78,8 @@ CREATE TABLE Listener (
 );
 
 -- Table: Playlist
+DROP TABLE IF EXISTS Playlist CASCADE;
+
 CREATE TABLE Playlist (
     playlist_id serial  NOT NULL,
     title text  NOT NULL,
@@ -72,6 +88,8 @@ CREATE TABLE Playlist (
 );
 
 -- Table: Playlist_Contains
+DROP TABLE IF EXISTS Playlist_Contains CASCADE;
+
 CREATE TABLE Playlist_Contains (
     playlist_id int  NOT NULL,
     song_id int  NOT NULL,
@@ -79,6 +97,8 @@ CREATE TABLE Playlist_Contains (
 );
 
 -- Table: Podcast
+DROP TABLE IF EXISTS Podcast CASCADE;
+
 CREATE TABLE Podcast (
     podcast_id serial  NOT NULL,
     podcast_name text  NOT NULL,
@@ -88,12 +108,16 @@ CREATE TABLE Podcast (
 );
 
 -- Table: Podcaster
+DROP TABLE IF EXISTS Podcaster CASCADE;
+
 CREATE TABLE Podcaster (
     username text  NOT NULL,
     CONSTRAINT Podcaster_pk PRIMARY KEY (username)
 );
 
 -- Table: Song
+DROP TABLE IF EXISTS Song CASCADE;
+
 CREATE TABLE Song (
     song_id serial  NOT NULL,
     song_name text  NOT NULL,
@@ -106,6 +130,8 @@ CREATE TABLE Song (
 );
 
 -- Table: User
+DROP TABLE IF EXISTS "User" CASCADE;
+
 CREATE TABLE "User" (
     username text  NOT NULL,
     first_name text  NOT NULL,
@@ -114,6 +140,7 @@ CREATE TABLE "User" (
     region text  NOT NULL,
     CONSTRAINT User_pk PRIMARY KEY (username)
 );
+
 
 -- foreign keys
 -- Reference: Album_Releases (table: Album_Upload)
