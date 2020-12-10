@@ -40,6 +40,7 @@ def query(username):
          FROM Songs_From_Albums AS sfa);
   '''
 
+  cmd = cur.mogrify(tmp, (username, ))
   cur.execute(cmd)
   rows = cur.fetchall()
   print("The other songs your listeners listen to include: \n")
