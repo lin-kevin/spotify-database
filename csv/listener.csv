@@ -1,6 +1,6 @@
 username,card_number,is_premium
-joey,69,FALSE
-daphne,42069,FALSE
-sara,69420,FALSE
-kevin,99,TRUE
-raja_soori,67262,FALSE
+joey,-1,FALSE
+daphne,-1,FALSE
+sara,-1,FALSE
+kevin,69,TRUE
+raja_soori,67262,TRUE
