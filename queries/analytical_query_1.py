@@ -22,7 +22,7 @@ def query(username):
        FROM Episode 
       WHERE podcast_id IN 
       (SELECT pp.podcast_id 
-         FROM Podcasters_Podcasts AS pp););
+         FROM Podcasters_Podcasts AS pp));
     
     DROP TABLE IF EXISTS Listened_Episodes CASCADE;
     CREATE TABLE Listened_Episodes AS 
@@ -30,7 +30,7 @@ def query(username):
        FROM Listen_Episode
       WHERE episode_id IN 
     (SELECT pe.episode_id
-       FROM Podcasters_Episodes AS pe););
+       FROM Podcasters_Episodes AS pe));
     
     SELECT AVG(listened_duration)
       FROM Listened_Episodes
@@ -41,6 +41,6 @@ def query(username):
   rows = cur.fetchall()
   print("The average listening time of your podcasts is ")
   for row in rows:
-    print(row + " seconds")
+    print(str(round(row[0], 2)) + " seconds")
 
 query(username)
