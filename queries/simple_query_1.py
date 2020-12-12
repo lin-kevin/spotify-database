@@ -12,10 +12,11 @@ card_number = input("Please enter your card number: ")
 def query(username):
   tmp = '''
     UPDATE Listener
-       SET is_premium = TRUE, card_number = %d
+       SET is_premium = TRUE, card_number = %s
      WHERE username = %s
   '''
-  cmd = cur.mogrify(tmp, (card_number, username))
+  cmd = cur.mogrify(tmp, (int(card_number), username))
+
   cur.execute(cmd)
   print(username + " is now a premium Spotify user!")
 

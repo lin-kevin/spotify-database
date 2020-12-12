@@ -15,7 +15,7 @@ CREATE database spotify;
 \copy Song(song_id,song_name,release_date,runtime,genre,lyrics,album_id) FROM 'csv/song.csv' csv header 
 \copy Playlist(playlist_id,title,username) FROM 'csv/playlist.csv' csv header 
 \copy Playlist_Contains(playlist_id,song_id) FROM 'csv/playlist_contains.csv' csv header
-\copy Podcast(podcast_id,podcast_name,summary,username) FROM 'csv/podcast.csv' csv header
+\copy Podcast(podcast_name,summary,username) FROM 'csv/podcast.csv' csv header
 \copy Episode(episode_id,episode_name,release_date,runtime,summary,podcast_id) FROM 'csv/episode.csv' csv header
-\copy Listen_Episode(username,listened_timestamp,listened_duration,episode_id,listened_id) FROM 'csv/listen_episode.csv' csv header
-\copy Listen_Song(username,listened_timestamp,listened_duration,song_id,listened_id) FROM 'csv/listen_song.csv' csv header
+\copy Listen_Episode(username,listened_timestamp,listened_duration,episode_id) FROM 'csv/listen_episode.csv' csv header
+\copy Listen_Song(username,listened_timestamp,listened_duration,song_id) FROM 'csv/listen_song.csv' csv header

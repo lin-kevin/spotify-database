@@ -17,9 +17,10 @@ def query(lyrics):
   cmd = cur.mogrify(tmp, ('%' + lyrics + '%',))
   cur.execute(cmd)
   rows = cur.fetchall()
-  print("The title(s) of the song you're looking for could be \n")
+  print("\n")
+  print("The title(s) of the song you're looking for could be ")
   for row in rows:
-    print(row)
+    print(row[0])
 
 query(lyrics)
     

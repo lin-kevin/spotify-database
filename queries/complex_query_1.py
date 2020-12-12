@@ -12,40 +12,45 @@ def query(username):
   tmp = '''
     DROP TABLE IF EXISTS Artist_Album CASCADE;
     CREATE TABLE Artist_Album AS 
-    (SELECT * 
-       FROM Album_Upload 
-      WHERE username = %s);
+          (SELECT * 
+            FROM Album_Upload 
+            WHERE username = %s);
 
     DROP TABLE IF EXISTS Songs_From_Albums CASCADE;
     CREATE TABLE Songs_From_Albums AS 
-    (SELECT * 
-       FROM Song
-      WHERE album_id IN 
-      (SELECT aa.album_id 
-         FROM Artist_Album AS aa););
-    
+          (SELECT * 
+            FROM Song AS s
+            WHERE s.album_id IN (SELECT aa.album_id 
+                                FROM Artist_Album AS aa));
+
     DROP TABLE IF EXISTS Artist_Listeners CASCADE;
     CREATE TABLE Artist_Listeners AS 
-    (SELECT * 
-       FROM Listen_Song 
-      WHERE song_id IN 
-      (SELECT sfa.song_id
-         FROM Songs_From_Albums AS sfa););
-    
-    SELECT s.song_name 
-      FROM Artist_Listeners AS al 
-      JOIN Song AS s ON al.song_id = s.song_id 
-     WHERE s.song_id NOT IN 
-          (SELECT sfa.song_id
-         FROM Songs_From_Albums AS sfa);
+          (SELECT * 
+            FROM Listen_Song 
+            WHERE song_id IN (SELECT sfa.song_id
+                                FROM Songs_From_Albums AS sfa));
+
+    DROP TABLE IF EXISTS Also_Listened_To CASCADE;
+    CREATE TABLE Also_Listened_To AS 
+          (SELECT * 
+             FROM Listen_Song
+            WHERE username IN (SELECT al.username 
+                                 FROM Artist_Listeners AS al));
+
+    SELECT DISTINCT s.song_name
+      FROM Also_Listened_To AS al 
+          JOIN Listen_Song AS ls ON al.username = ls.username
+          JOIN Song AS s ON al.song_id = s.song_id
+            WHERE s.song_id NOT IN (SELECT sfa.song_id
+                                      FROM Songs_From_Albums AS sfa);
   '''
 
   cmd = cur.mogrify(tmp, (username, ))
   cur.execute(cmd)
   rows = cur.fetchall()
-  print("The other songs your listeners listen to include: \n")
+  print("\nThe other songs your listeners listen to include: ")
   for row in rows:
-    print(row)
+    print(row[0])
 
 query(username)
     
