@@ -4,10 +4,6 @@ con = pg2.connect(database='spotify', user='isdb')
 con.autocommit = True
 cur = con.cursor()
 
-print("US8: As a podcaster, I want to find the average listening time of my podcasts so that I can see how engaged my audience is.")
-
-username = input("Please enter your username: ")
-
 def query(username):
   tmp = '''
     DROP TABLE IF EXISTS Podcasters_Podcasts CASCADE;
@@ -43,4 +39,12 @@ def query(username):
   for row in rows:
     print(str(round(row[0], 2)) + " seconds")
 
-query(username)
+def main():
+  print("US8: As a podcaster, I want to find the average listening time of my podcasts so that I can see how engaged my audience is.")
+
+  username = input("Please enter your username: ")
+
+  query(username)
+
+if __name__ == "__main__":
+    main()

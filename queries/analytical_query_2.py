@@ -4,10 +4,6 @@ con = pg2.connect(database='spotify', user='isdb')
 con.autocommit = True
 cur = con.cursor()
 
-print("US9: As a listener I want to see the 5 songs I listened to the most in 2020 so that I can share my music taste with my Instagram followers.")
-
-username = input("Please enter your username: ")
-
 def query(username):
   tmp = '''
     SELECT s.song_name, COUNT(s.song_id)
@@ -26,4 +22,12 @@ def query(username):
   for row in rows:
     print(row)
 
-query(username)
+def main():
+  print("US9: As a listener I want to see the 5 songs I listened to the most in 2020 so that I can share my music taste with my Instagram followers.")
+
+  username = input("Please enter your username: ")
+
+  query(username)
+
+if __name__ == "__main__":
+    main()

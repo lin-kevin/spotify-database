@@ -13,9 +13,6 @@ def query(username, podcast_name, summary):
   cur.execute(cmd)
   print("Your podcast " + podcast_name + " is now on Spotify!")
 
-
-    
-
 def main():
   print("US2: As a podcaster I want to upload my podcasts so that people can listen to what interests me.")
 

@@ -4,10 +4,6 @@ con = pg2.connect(database='spotify', user='isdb')
 con.autocommit = True
 cur = con.cursor()
 
-print("US3: As a listener, I want to find the title of song I am listening to on the radio using the lyrics of the song so that I can listen to it later on.")
-
-lyrics = input("Please enter the lyrics you detected: ")
-
 def query(lyrics):
   tmp = '''
     SELECT song_name
@@ -21,6 +17,13 @@ def query(lyrics):
   print("The title(s) of the song you're looking for could be ")
   for row in rows:
     print(row[0])
-
-query(lyrics)
     
+def main():
+  print("US3: As a listener, I want to find the title of song I am listening to on the radio using the lyrics of the song so that I can listen to it later on.")
+
+  lyrics = input("Please enter the lyrics you detected: ")
+
+  query(lyrics)
+
+if __name__ == "__main__":
+    main()
