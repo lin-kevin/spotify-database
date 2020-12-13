@@ -4,10 +4,6 @@ con = pg2.connect(database='spotify', user='isdb')
 con.autocommit = True
 cur = con.cursor()
 
-print ("As a listener, I want to search for playlists with my favorite artist’s songs inside.")
-
-artist = input("Please enter your favorite artist's username: ")
-
 def query(artist):
   tmp = '''
     DROP TABLE IF EXISTS Artist_Album CASCADE;
@@ -36,5 +32,13 @@ def query(artist):
   for row in rows:
     print(row[0])
 
-query(artist)
+def main():
+  print("US5: As a listener, I want to search for playlists with my favorite artist’s songs inside.")
+
+  artist = input("Please enter your favorite artist's username: ")
+
+  query(artist)
+
+if __name__ == "__main__":
+    main()
     
