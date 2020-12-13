@@ -38,7 +38,7 @@ def query(username):
   rows = cur.fetchall()
   print("\nYour listeners are from: ")
   for row in rows:
-    print(row)
+    print(row[0])
 
 def main():
   print("US10: As an artist, I want to see how many people listened to my songs in each region so that I can see how broad my global fanbase is.")
