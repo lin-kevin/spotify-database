@@ -35,10 +35,10 @@ def query(username):
 
     SELECT DISTINCT s.song_name
       FROM Also_Listened_To AS al 
-          JOIN Listen_Song AS ls ON al.username = ls.username
-          JOIN Song AS s ON al.song_id = s.song_id
-            WHERE s.song_id NOT IN (SELECT sfa.song_id
-                                      FROM Songs_From_Albums AS sfa);
+           JOIN Listen_Song AS ls ON al.username = ls.username
+           JOIN Song AS s ON al.song_id = s.song_id
+      WHERE s.song_id NOT IN (SELECT sfa.song_id
+                                FROM Songs_From_Albums AS sfa);
   '''
 
   cmd = cur.mogrify(tmp, (username, ))
@@ -52,6 +52,12 @@ def main():
   print ("US4: As an artist, I want to see what other songs my listeners listen to so that I can create music tailored to their liking.")
 
   username = input("Please enter your username: ")
+
+  print("\nGetting albums from artist with username="+username+"...")
+  print("Getting all songs from all albums retrieved...")
+  print("Getting all listeners who have listened to a song from "+username+"...")
+  print("Getting all the song_ids the listeners have listened to...")
+  print("Getting the names of all the songs with the corresponding song_ids and removing the songs from the inputted artist...\n")
 
   query(username)
 
