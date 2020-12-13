@@ -36,7 +36,10 @@ def query(username):
   cmd = cur.mogrify(tmp, (username,))
   cur.execute(cmd)
   rows = cur.fetchall()
-
+  if len(rows) == 0:
+    print("Your listeners don't listen to any podcasts!")
+    return
+  print("Your listeners also listen to the following podcasts:")
   for row in rows:
     print(row[0])
 
@@ -48,7 +51,7 @@ def main():
   print("\nGetting albums from artist with username="+username+"...")
   print("Getting all songs from all albums retrieved...")
   print("Getting all listeners who have listened to a song from "+username+"...")
-  print("Getting the episodes "+username+" has listened to and getting the podcast names...")
+  print("Getting all the episodes "+username+"'s listeners have listened to and getting the podcast names...\n")
 
   query(username)
     

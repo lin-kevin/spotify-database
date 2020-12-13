@@ -44,7 +44,10 @@ def query(username):
   cmd = cur.mogrify(tmp, (username, ))
   cur.execute(cmd)
   rows = cur.fetchall()
-  print("\nThe other songs your listeners listen to include: ")
+  if len(rows) == 0:
+    print("Your listeners don't listen to any other songs!")
+    return
+  print("The other songs your listeners listen to include: ")
   for row in rows:
     print(row[0])
 

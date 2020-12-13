@@ -9,7 +9,7 @@ def query(username):
     SELECT s.song_name
       FROM Song AS s
            JOIN Listen_Song AS ls ON s.song_id=ls.song_id
-     WHERE ls.username = %s AND YEAR(listened_timestamp) = 2020
+     WHERE ls.username = %s AND EXTRACT(YEAR FROM listened_timestamp) = 2020
      GROUP BY s.song_id 
      ORDER BY COUNT(s.song_id) DESC
      LIMIT 5;
@@ -18,7 +18,7 @@ def query(username):
   cmd = cur.mogrify(tmp, (username, ))
   cur.execute(cmd)
   rows = cur.fetchall()
-  print("\nYour top 5 songs of 2020 are: ")
+  print("Your top 5 songs of 2020 are: ")
   for row in rows:
     print(row[0])
 
