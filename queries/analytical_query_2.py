@@ -9,7 +9,7 @@ def query(username):
     SELECT s.song_name
       FROM Song AS s
            JOIN Listen_Song AS ls ON s.song_id=ls.song_id
-     WHERE ls.username = %s
+     WHERE ls.username = %s 
      GROUP BY s.song_id 
      ORDER BY COUNT(s.song_id) DESC
      LIMIT 5;

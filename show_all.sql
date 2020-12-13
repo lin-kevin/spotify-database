@@ -6,19 +6,19 @@ SELECT * FROM Album_Upload;
 \echo Album: Keeps track of the name and release date corresponding to the album id
 SELECT * FROM Album;
 
-\echo Artist: Biography corresponding to each artist username
+\echo Artist: Keeps track of biography corresponding to each artist username
 SELECT * FROM Artist;
 
 \echo Episode: Associates an episode_id with each episode, containing information such as, the episode name, release date, runtime, summary, and the podcast id the episode is for
 SELECT * FROM Episode;
 
-\echo Listen_Episode: Keeps track of each time a user listens to a podcast and for how long and when
+\echo Listen_Episode: Keeps track of each time a user listens to an episode and for how long and when they listened to it
 SELECT * FROM Listen_Episode;
 
-\echo Listen_Song: Keeps track of each time a user listens to a song and for how long and when
+\echo Listen_Song: Keeps track of each time a user listens to a song and for how long and when they listened to it
 SELECT * FROM Listen_Song;
 
-\echo Listener: Keeps track of the card number and if the user associated with a username is a premium member
+\echo Listener: Keeps track of the card number and if the user associated with a username is a premium member, card_number=-1 if they are not a premium memeber
 SELECT * FROM Listener;
 
 \echo Playlist_Contains: Keeps track of which song ids are in which playlists with the corresponding playlist id
@@ -27,7 +27,7 @@ SELECT * FROM Playlist_Contains;
 \echo Playlist: Keeps track of which user owns which playlist and the playlist title corresponding to the playlist id
 SELECT * FROM Playlist;
 
-\echo Podcast: Keeps track of the username, podcast_name, and summary for each podcast and uniquely identifies it with the podcast id
+\echo Podcast: Keeps track of the username, podcast name, and summary for each podcast and uniquely identifies it with the podcast id
 SELECT * FROM Podcast;
 
 \echo Podcaster: Keeps track of which users are podcasters by their username

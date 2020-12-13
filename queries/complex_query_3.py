@@ -4,8 +4,6 @@ con = pg2.connect(database='spotify', user='isdb')
 con.autocommit = True
 cur = con.cursor()
 
-
-
 def query(username, podcaster):
   tmp = '''
     DROP TABLE IF EXISTS Episodes_From_Podcaster;
@@ -40,6 +38,10 @@ def main():
 
   username = input("Please enter your username: ")
   podcaster = input("Please enter the podcasters username: ")
+
+  print("\nGetting all the episode names and ids where the podcaster username="+podcaster+"...")
+  print("Getting all the episode ids where username="+username+" has listened to...")
+  print("Selecting all the episode names username="+username+" has not listened to...\n")
 
   query(username, podcaster)
     
