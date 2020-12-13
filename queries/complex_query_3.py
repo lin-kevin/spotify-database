@@ -4,7 +4,7 @@ con = pg2.connect(database='spotify', user='isdb')
 con.autocommit = True
 cur = con.cursor()
 
-print("As a listener, I want to see the episodes I have not listened to from a certain podcaster so that I find new episodes to listen to.")
+print("US6: As a listener, I want to see the episodes I have not listened to from a certain podcaster so that I find new episodes to listen to.")
 
 username = input("Please enter your username: ")
 podcaster = input("Please enter the podcasters username: ")

@@ -4,7 +4,7 @@ con = pg2.connect(database='spotify', user='isdb')
 con.autocommit = True
 cur = con.cursor()
 
-print ("As a listener, I want to search for playlists with my favorite artist’s songs inside.")
+print ("US5: As a listener, I want to search for playlists with my favorite artist’s songs inside.")
 
 artist = input("Please enter your favorite artist's username: ")
 

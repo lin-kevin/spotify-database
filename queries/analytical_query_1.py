@@ -4,7 +4,7 @@ con = pg2.connect(database='spotify', user='isdb')
 con.autocommit = True
 cur = con.cursor()
 
-print("As a podcaster, I want to find the average listening time of my podcasts so that I can see how engaged my audience is.")
+print("US8: As a podcaster, I want to find the average listening time of my podcasts so that I can see how engaged my audience is.")
 
 username = input("Please enter your username: ")
 

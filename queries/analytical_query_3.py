@@ -4,7 +4,7 @@ con = pg2.connect(database='spotify', user='isdb')
 con.autocommit = True
 cur = con.cursor()
 
-print("As an artist, I want to see how many people listened to my songs in each region so that I can see how broad my global fanbase is.")
+print("US10: As an artist, I want to see how many people listened to my songs in each region so that I can see how broad my global fanbase is.")
 
 username = input("Please enter your username: ")
 

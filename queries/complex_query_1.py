@@ -4,7 +4,7 @@ con = pg2.connect(database='spotify', user='isdb')
 con.autocommit = True
 cur = con.cursor()
 
-print ("As an artist, I want to see what other songs my listeners listen to so that I can create music tailored to their liking.")
+print ("US4: As an artist, I want to see what other songs my listeners listen to so that I can create music tailored to their liking.")
 
 username = input("Please enter your username: ")
 

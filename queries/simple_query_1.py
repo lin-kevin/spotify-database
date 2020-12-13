@@ -4,12 +4,7 @@ con = pg2.connect(database='spotify', user='isdb')
 con.autocommit = True
 cur = con.cursor()
 
-print("As a listener, I want to buy a premium subscription so that I can avoid ads when listening to music.")
-
-username = input("Please enter your username: ")
-card_number = input("Please enter your card number: ")
-
-def query(username):
+def query(username, card_number):
   tmp = '''
     UPDATE Listener
        SET is_premium = TRUE, card_number = %s
@@ -20,5 +15,14 @@ def query(username):
   cur.execute(cmd)
   print(username + " is now a premium Spotify user!")
 
-query(username)
+def main():
+  print("US1: As a listener, I want to buy a premium subscription so that I can avoid ads when listening to music.")
+
+  username = input("Please enter your username: ")
+  card_number = input("Please enter your card number: ")
+
+  query(username, card_number)
+
+if __name__ == "__main__":
+    main()
     

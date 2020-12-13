@@ -4,7 +4,7 @@ con = pg2.connect(database='spotify', user='isdb')
 con.autocommit = True
 cur = con.cursor()
 
-print("As a listener, I want to find the title of song I am listening to on the radio using the lyrics of the song so that I can listen to it later on.")
+print("US3: As a listener, I want to find the title of song I am listening to on the radio using the lyrics of the song so that I can listen to it later on.")
 
 lyrics = input("Please enter the lyrics you detected: ")
 
