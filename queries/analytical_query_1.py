@@ -45,9 +45,9 @@ def main():
   username = input("Please enter your username: ")
 
   print("\nGetting podcasts uploaded by podcaster with username=" + username + "...")
-  print("\nGetting podcast episodes uploaded by this podcaster...")
-  print("\nFinding all listening times of this podcaster's edpisodes...")
-  print("\nClaculating the average listening time of this podcaster's episdoes...\n")
+  print("Getting podcast episodes uploaded by this podcaster...")
+  print("Finding all listening times of this podcaster's edpisodes...")
+  print("Calculating the average listening time of this podcaster's episdoes...\n")
 
   query(username)
 

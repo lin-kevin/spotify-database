@@ -13,7 +13,6 @@ def query(lyrics):
   cmd = cur.mogrify(tmp, ('%' + lyrics + '%',))
   cur.execute(cmd)
   rows = cur.fetchall()
-  print("\n")
   print("The title(s) of the song you're looking for could be ")
   for row in rows:
     print(row[0])
@@ -24,7 +23,7 @@ def main():
   lyrics = input("Please enter the lyrics you detected: ")
 
   print("\nGetting Song table...")
-  print("Filter table where lyrics have '"+lyrics+"' in them...")
+  print("Filter table for songs with lyrics that have '"+lyrics+"' in them...")
   print("Getting song_names...\n")
 
   query(lyrics)

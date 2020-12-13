@@ -36,9 +36,9 @@ def query(username):
   cmd = cur.mogrify(tmp, (username, ))
   cur.execute(cmd)
   rows = cur.fetchall()
-  print("\nYour listeners are from: ")
+  print("Your listeners are from: ")
   for row in rows:
-    print(row[0])
+    print(row[0] + " with count " + str(row[1]))
 
 def main():
   print("US10: As an artist, I want to see how many people listened to my songs in each region so that I can see how broad my global fanbase is.")

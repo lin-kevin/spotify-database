@@ -27,9 +27,9 @@ def query(username, podcaster):
   cur.execute(cmd)
   rows = cur.fetchall()
   if len(rows) == 0:
-      print("\nYou have listened to all their podcasts!")
-      return;
-  print("\nEpisodes you have not listened to from the podcaster are: ")
+      print("You have listened to all their podcasts!")
+      return
+  print("Episodes you have not listened to from the podcaster are: ")
   for row in rows:
     print(row[0])
 
@@ -39,8 +39,8 @@ def main():
   username = input("Please enter your username: ")
   podcaster = input("Please enter the podcasters username: ")
 
-  print("\nGetting all the episode names and ids where the podcaster username="+podcaster+"...")
-  print("Getting all the episode ids where username="+username+" has listened to...")
+  print("\nGetting all the episode names and ids from the podcaster with username="+podcaster+"...")
+  print("Getting all the episode ids that username="+username+" has listened to...")
   print("Selecting all the episode names username="+username+" has not listened to...\n")
 
   query(username, podcaster)

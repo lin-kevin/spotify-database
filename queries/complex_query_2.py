@@ -28,7 +28,10 @@ def query(artist):
   cmd = cur.mogrify(tmp, (artist, ))
   cur.execute(cmd)
   rows = cur.fetchall()
-  print("\nPlaylists with your favorite artists are: ")
+  if len(rows) == 0:
+    print("There are no playlists with your favorite artist!")
+    return;
+  print("Playlists with your favorite artists are: ")
   for row in rows:
     print(row[0])
 
