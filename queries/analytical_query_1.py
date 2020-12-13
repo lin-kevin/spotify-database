@@ -40,9 +40,14 @@ def query(username):
     print(str(round(row[0], 2)) + " seconds")
 
 def main():
-  print("US8: As a podcaster, I want to find the average listening time of my podcasts so that I can see how engaged my audience is.")
+  print("US8: As a podcaster, I want to find the average listening time of my podcasts' episodes so that I can see how engaged my audience is.")
 
   username = input("Please enter your username: ")
+
+  print("\nGetting podcasts uploaded by podcaster with username=" + username + "...")
+  print("\nGetting podcast episodes uploaded by this podcaster...")
+  print("\nFinding all listening times of this podcaster's edpisodes...")
+  print("\nClaculating the average listening time of this podcaster's episdoes...\n")
 
   query(username)
 
