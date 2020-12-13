@@ -37,6 +37,10 @@ def main():
 
   artist = input("Please enter your favorite artist's username: ")
 
+  print("\nGetting albums from artist with username="+artist+"...")
+  print("Getting all songs from all albums retrieved...")
+  print("Getting the playlist title where the playlist contains a song id that is in the set of all songs the artist has...\n")
+
   query(artist)
 
 if __name__ == "__main__":

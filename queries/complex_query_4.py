@@ -26,7 +26,6 @@ def query(username):
             WHERE song_id IN (SELECT sfa.song_id
                                 FROM Songs_From_Albums AS sfa));
     
-
     SELECT DISTINCT p.podcast_name
       FROM Artist_Listeners AS al
             JOIN Listen_Episode AS le ON le.username = al.username
@@ -45,6 +44,11 @@ def main():
   print("US7: As an artist, I want to see which podcasts my listeners listen to so that I know what else they’re interested in.")
 
   username = input("Please enter your username: ")
+
+  print("\nGetting albums from artist with username="+username+"...")
+  print("Getting all songs from all albums retrieved...")
+  print("Getting all listeners who have listened to a song from "+username+"...")
+  print("Getting the episodes "+username+" has listened to and getting the podcast names...")
 
   query(username)
     

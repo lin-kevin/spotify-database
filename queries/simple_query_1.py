@@ -21,6 +21,10 @@ def main():
   username = input("Please enter your username: ")
   card_number = input("Please enter your card number: ")
 
+  print("\nUpdating Listener Table...")
+  print("Getting user with username="+username+"...")
+  print("Setting is_premium to TRUE and setting card_number to "+card_number+"...\n")
+
   query(username, card_number)
 
 if __name__ == "__main__":

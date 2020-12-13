@@ -20,6 +20,9 @@ def main():
   podcast_name = input("Please enter your podcast's name: ")
   summary = input("Please enter a summary of your podcast: ")
 
+  print("\nInserting into Podcast table...")
+  print("Inserting values username="+username+" podcast_name="+podcast_name+" and summary="+summary+"\n")
+
   query(username, podcast_name, summary)
 
 if __name__ == "__main__":
