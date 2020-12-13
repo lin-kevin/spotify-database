@@ -45,6 +45,12 @@ def main():
 
   username = input("Please enter your username: ")
 
+  print("\nGetting albums from artist with username="+username+"...")
+  print("Getting all songs from all albums retrieved...")
+  print("Getting all listeners who have listened to a song from "+username+"...")
+  print("Finding which region each listener is from...")
+  print("Counting the number of listeners in each region...\n")
+
   query(username)
 
 if __name__ == "__main__":
