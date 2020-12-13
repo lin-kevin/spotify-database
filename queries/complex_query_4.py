@@ -19,11 +19,19 @@ def query(username):
             WHERE s.album_id IN (SELECT aa.album_id 
                                 FROM Artist_Album AS aa));
 
-    SELECT DISTINCT p.title
-      FROM Playlist AS p
-           JOIN Playlist_Contains AS pc ON p.playlist_id = pc.playlist_id
-     WHERE pc.song_id IN (SELECT sfa.song_id 
-                            FROM Songs_From_Albums AS sfa);
+    DROP TABLE IF EXISTS Artist_Listeners CASCADE;
+    CREATE TABLE Artist_Listeners AS 
+          (SELECT * 
+            FROM Listen_Song 
+            WHERE song_id IN (SELECT sfa.song_id
+                                FROM Songs_From_Albums AS sfa));
+    
+
+    SELECT DISTINCT p.podcast_name
+      FROM Artist_Listeners AS al
+            JOIN Listen_Episode AS le ON le.username = al.username
+            JOIN Episode AS e ON e.episode_id = le.episode_id
+            JOIN Podcast AS p ON p.podcast_id = e.podcast_id;
   '''
 
   cmd = cur.mogrify(tmp, (username,))
@@ -34,7 +42,7 @@ def query(username):
     print(row[0])
 
 def main():
-  print("US7: As an artist, I want to see which playlists my songs are in so that I know what type of music my songs are being grouped into.")
+  print("US7: As an artist, I want to see which podcasts my listeners listen to so that I know what else they’re interested in.")
 
   username = input("Please enter your username: ")
 
